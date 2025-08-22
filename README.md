@@ -1,4 +1,4 @@
-# 👤 Controlador de Usuários – ASP.NET Core MVC
+# 👤 Controlador de Contatos – ASP.NET Core MVC
 
 ## 📌 Visão Geral
 O **Controlador de Usuários** é responsável por gerenciar todas as operações relacionadas ao **cadastro, edição, listagem e exclusão de usuários** dentro do sistema.  
