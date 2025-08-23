@@ -11,7 +11,6 @@ namespace ControleDeContatos.Controllers
 
         public ContatoController(IContatoRepositorio contatoRepositorio)
         {
-
             _contatoRepositorio = contatoRepositorio;
         }
 
