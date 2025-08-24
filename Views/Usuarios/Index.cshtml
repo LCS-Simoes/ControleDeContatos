@@ -30,13 +30,14 @@
 
     <h1 class="display-4">Listagem de Usuários</h1>
 
-    <table class="table" id="table-usuarios">
+    <table class="display" id="table-usuarios" sytle="width: 100%">
         <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Login</th>
                 <th scope="col">E-mail</th>
+                <th scope="col">Perfil</th>
                 <th scope="col">Data de Cadastro</th>
                 <th scope="col"></th>
             </tr>
@@ -51,6 +52,7 @@
                         <td>@usuarios.Nome</td>
                         <td>@usuarios.Login</td>
                         <td>@usuarios.Email</td>
+                        <td>@usuarios.Perfil</td>
                         <td>@usuarios.DataCadastro</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
