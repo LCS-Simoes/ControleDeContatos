@@ -21,6 +21,11 @@ namespace ControleDeContatos.Models
         public DateTime DataCadastro { get; set; }
         public DateTime? AlteracaoUser { get; set; }
 
+        public bool SenhaValida(string senha)
+        {
+            return Senha == senha;
+        }
+
         /* Colocando ? após o DateTime, ele passar a não ser um item obrigatório
          * da criação de um Usuario
          */

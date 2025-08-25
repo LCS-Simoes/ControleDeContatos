@@ -12,6 +12,12 @@ namespace ControleDeContatos.Repositorio
             _bancoContext = bancoContext;
         }
 
+        public UsuariosModel BuscarLogin(string login)
+        {
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
+        }
+
+
         public UsuariosModel BuscarID(int id)
         {
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Id == id);
