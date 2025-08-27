@@ -1,9 +1,11 @@
-using System.Diagnostics;
+using ControleDeContatos.Filters;
 using ControleDeContatos.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace ControleDeContatos.Controllers
 {
+    [PaginaUsuarioLogado] //Filtro
     public class HomeController : Controller
     {
 

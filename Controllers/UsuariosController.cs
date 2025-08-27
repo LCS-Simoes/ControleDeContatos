@@ -1,4 +1,5 @@
-﻿using ControleDeContatos.Models;
+﻿using ControleDeContatos.Filters;
+using ControleDeContatos.Models;
 using ControleDeContatos.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
@@ -6,6 +7,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ControleDeContatos.Controllers
 {
+    [PaginaUsuarioLogado]
     public class UsuariosController : Controller
     {
 
