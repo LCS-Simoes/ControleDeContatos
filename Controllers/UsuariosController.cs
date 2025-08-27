@@ -7,7 +7,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ControleDeContatos.Controllers
 {
-    [PaginaUsuarioLogado]
+    [PaginaRestritaAdmin] // Filtro adicionado
     public class UsuariosController : Controller
     {
 
