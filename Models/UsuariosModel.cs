@@ -1,4 +1,5 @@
 ﻿using ControleDeContatos.Enums;
+using ControleDeContatos.Helper;
 using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeContatos.Models
@@ -23,7 +24,12 @@ namespace ControleDeContatos.Models
 
         public bool SenhaValida(string senha)
         {
-            return Senha == senha;
+            return Senha == senha.Criptografar();
+        }
+
+        public void SetSenhaHash()
+        {
+            Senha = Senha.Criptografar();
         }
 
         /* Colocando ? após o DateTime, ele passar a não ser um item obrigatório
