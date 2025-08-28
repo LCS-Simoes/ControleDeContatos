@@ -32,6 +32,14 @@ namespace ControleDeContatos.Models
             Senha = Senha.Criptografar();
         }
 
+        public string GerarNovaSenha()
+        {
+            string novaSenha = Guid.NewGuid().ToString().Substring(0,8);
+            Senha = novaSenha.Criptografar();
+            return novaSenha;
+        }
+
+
         /* Colocando ? após o DateTime, ele passar a não ser um item obrigatório
          * da criação de um Usuario
          */

@@ -24,6 +24,11 @@ namespace ControleDeContatos.Controllers
             return View();
         }
 
+        public IActionResult Redefinir()
+        {
+            return View();
+        }
+
         public IActionResult Deslogar()
         {
             _sessao.RemoverSessaoUsuario();
@@ -60,5 +65,35 @@ namespace ControleDeContatos.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+
+        [HttpPost]
+        public IActionResult EnviarRedefinicao(RedefinirSenhaModel redefinirSenhaModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UsuariosModel usuarios = _usuarioRepositorio.buscarInformacoes(redefinirSenhaModel.Login, redefinirSenhaModel.Email);
+                    if (usuarios != null)
+                    {
+                        string novaSenha = usuarios.GerarNovaSenha();
+
+
+                        TempData["MensagemSucesso"] = "Enviamos uma nova senha em seu e-mail cadastrado.";
+                        return RedirectToAction("Index","Login");
+                    }
+                    TempData["MensagemErro"] = $"Login e/ou E-mail inválido(s). Por favor, tente novamente.";
+                }
+
+                return View("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = "Ops não conseguimos redefinir sua senha, tente novamente, detalhe erro:" + ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 } 
