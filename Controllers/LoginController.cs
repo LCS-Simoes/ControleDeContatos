@@ -56,7 +56,7 @@ namespace ControleDeContatos.Controllers
                         TempData["MensagemErro"] = $"Senha inválida. Por favor, tente novamente.";
                     }
 
-                    TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente.";
+                    TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente. ";
                 }
 
                 return View("Index");
