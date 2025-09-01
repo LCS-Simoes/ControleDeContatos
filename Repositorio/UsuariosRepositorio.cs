@@ -70,6 +70,22 @@ namespace ControleDeContatos.Repositorio
             return usuariosDB;
         }
 
+        public UsuariosModel AlterarSenha(AlterarSenhaModel alterarSenhaModel)
+        {
+            UsuariosModel usuariosDB = BuscarID(alterarSenhaModel.Id);
+            if (usuariosDB == null) throw new Exception("Ocorreu um erro ao atualizar a senha do usuário, o usuário não foi enccontrado");
+
+            if (usuariosDB.SenhaValida(alterarSenhaModel.NovaSenha)) throw new Exception("Nova senha deve ser divergente da atual");
+
+            usuariosDB.SetNovaSenha(alterarSenhaModel.NovaSenha);
+            usuariosDB.AlteracaoUser = DateTime.Now;
+
+            _bancoContext.Usuarios.Update(usuariosDB);
+            _bancoContext.SaveChanges();
+
+            return usuariosDB;
+        }
+
         public UsuariosModel buscarInformacoes(string login, string email)
         {
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper() && x.Email.ToUpper() == email.ToUpper());

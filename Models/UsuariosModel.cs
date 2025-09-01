@@ -32,6 +32,10 @@ namespace ControleDeContatos.Models
             Senha = Senha.Criptografar();
         }
 
+        public void SetNovaSenha(string novaSenha)
+        {
+            Senha = novaSenha.Criptografar();
+        }
         public string GerarNovaSenha()
         {
             string novaSenha = Guid.NewGuid().ToString().Substring(0,8);
