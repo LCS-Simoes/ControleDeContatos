@@ -1,0 +1,48 @@
+﻿@using ControleDeContatos.Enums
+
+@model AlterarSenhaModel
+@{
+    ViewData["Title"] = "Alterar Senha";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Alterar Senha</h1>
+</div>
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+<form asp-controller="AlterarSenha" asp-action="Alterar" method="post">
+    <div class="mb-3">
+        <div class="form-group"></div>
+        <label for="novaSenha" class="form-label">Nova Senha</label>
+        <input type="password" asp-for="NovaSenha" class="form-control" placeholder="Digite a nova Senha do usuário">
+        @Html.ValidationMessageFor(x => x.NovaSenha)
+        <br />
+    </div>
+    <div class="mb-3">
+        <div class="form-group"></div>
+        <label for="confirmarSenha" class="form-label">Confirme a nova Senha</label>
+        <input type="password" asp-for="ConfirmarNovaSenha" class="form-control" placeholder="Confirme a nova Senha do usuário">
+        @Html.ValidationMessageFor(x => x.ConfirmarNovaSenha)
+        <br />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Alterar</button>
+    <a class="btn btn-secondary" asp-controller="Usuarios" asp-action="Index" role="button">Voltar</a>
+</form>
