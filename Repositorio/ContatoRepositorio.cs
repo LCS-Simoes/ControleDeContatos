@@ -28,9 +28,9 @@ namespace ControleDeContatos.Repositorio
         }
 
 
-        public List<ContatoModel> BuscarRegistros()
+        public List<ContatoModel> BuscarRegistros(int usuarioID)
         {
-            return _bancoContext.Contato.ToList(); //Listando tudo do banco de dados
+            return _bancoContext.Contato.Where(x => x.UsuarioID == usuarioID).ToList(); 
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using ControleDeContatos.Filters;
+using ControleDeContatos.Helper;
 using ControleDeContatos.Models;
 using ControleDeContatos.Repositorio;
 using Microsoft.AspNetCore.Mvc;
@@ -10,16 +11,19 @@ namespace ControleDeContatos.Controllers
     {
 
         private readonly IContatoRepositorio _contatoRepositorio;
+        private readonly ISessao _sessao;
 
-        public ContatoController(IContatoRepositorio contatoRepositorio)
+        public ContatoController(IContatoRepositorio contatoRepositorio, ISessao sessao)
         {
             _contatoRepositorio = contatoRepositorio;
+            _sessao = sessao;
         }
 
         //Métodos Gets
         public IActionResult Index()
         {
-            List<ContatoModel> contatos = _contatoRepositorio.BuscarRegistros();
+            UsuariosModel usuarioLogado = _sessao.BuscarSessaoUsuario();
+            List<ContatoModel> contatos = _contatoRepositorio.BuscarRegistros(usuarioLogado.Id);
             return View(contatos);
         }
 
