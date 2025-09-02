@@ -79,6 +79,8 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    UsuariosModel usuarioLogado = _sessao.BuscarSessaoUsuario();
+                    contato.UsuarioID = usuarioLogado.Id;
                     _contatoRepositorio.Adicionar(contato);
                     TempData["MensagemSucesso"] = "Contato cadastrado com sucesso";
                     return RedirectToAction("Index");
@@ -102,6 +104,8 @@ namespace ControleDeContatos.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    UsuariosModel usuarioLogado = _sessao.BuscarSessaoUsuario();
+                    contato.UsuarioID = usuarioLogado.Id;
                     _contatoRepositorio.Atualizar(contato);
                     TempData["MensagemSucesso"] = "Contato editado com sucesso";
                     return RedirectToAction("Index");
